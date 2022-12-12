@@ -3,14 +3,14 @@
 #include <string.h>
 #include <stdbool.h>
 
-int width, height = 0;
+int width8, height8 = 0;
 
-bool is_visible_fos(int forest[width][height], int x, int y) {
+bool is_visible_fos(int forest[width8][height8], int x, int y) {
     int h = forest[x][y];
 
     //from right
     bool vis = true;
-    for (int i = x + 1; i < width; ++i)
+    for (int i = x + 1; i < width8; ++i)
         if(forest[i][y] >= h) vis = false;
     if(vis) return true;
 
@@ -22,7 +22,7 @@ bool is_visible_fos(int forest[width][height], int x, int y) {
 
     //from bottom
     vis = true;
-    for (int i = y + 1; i < height; ++i)
+    for (int i = y + 1; i < height8; ++i)
         if(forest[x][i] >= h) vis = false;
     if(vis) return true;
 
@@ -35,12 +35,12 @@ bool is_visible_fos(int forest[width][height], int x, int y) {
     return false;
 }
 
-int scenic_score(int forest[width][height], int x, int y) {
+int scenic_score(int forest[width8][height8], int x, int y) {
     int h = forest[x][y];
     int trees = 0;
     int score;
     //left
-    for (int i = x + 1; i < width; ++i) {
+    for (int i = x + 1; i < width8; ++i) {
         trees++;
         if(forest[i][y] >= h) break;
     }
@@ -54,7 +54,7 @@ int scenic_score(int forest[width][height], int x, int y) {
     score *= trees;
     trees = 0;
     //down
-    for (int i = y + 1; i < height; ++i) {
+    for (int i = y + 1; i < height8; ++i) {
         trees++;
         if(forest[x][i] >= h) break;
     }
@@ -75,20 +75,20 @@ void sol8() {
 
     char line[120];
 
-    height = 0;
+    height8 = 0;
     //Get size
     while(fgets(line, 120, file)) {
-        width = (int)strlen(line);
-        height += 1;
+        width8 = (int)strlen(line);
+        height8 += 1;
     }
 
     //Load data
-    int forest[width][height];
+    int forest[width8][height8];
     fclose(file);
     file = fopen(fileName, "r");
-    for (int i = 0; i < height; ++i) {
+    for (int i = 0; i < height8; ++i) {
         fgets(line, 120, file);
-        for (int j = 0; j < width; ++j) {
+        for (int j = 0; j < width8; ++j) {
             forest[j][i] = line[j] - 48;
         }
     }
@@ -96,8 +96,8 @@ void sol8() {
     //Solve
     int visible = 0;
     int best = 0;
-    for (int y = 0; y < height; ++y) {
-        for (int x = 0; x < width; ++x) {
+    for (int y = 0; y < height8; ++y) {
+        for (int x = 0; x < width8; ++x) {
             int score = scenic_score(forest, x, y);
             if (score > best) best = score;
 
