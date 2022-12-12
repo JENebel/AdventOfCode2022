@@ -100,12 +100,13 @@ void sol8() {
         for (int x = 0; x < width; ++x) {
             int score = scenic_score(forest, x, y);
             if (score > best) best = score;
+
             if(is_visible_fos(forest, x, y)) {
                 visible++;
-                printf("%d", forest[x][y]);
-            } else printf(".");
+                //printf("%d", forest[x][y]);
+            } //else printf(".");
         }
-        printf("\n");
+//        printf("\n");
     }
 
     printf("Part 1: %d\n", visible);

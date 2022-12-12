@@ -5,10 +5,11 @@
 #include "dec6.c"
 #include "dec7.c"
 #include "dec8.c"
+#include "dec11.c"
 
 #include <stdio.h>
 #include <stdlib.h>
 
 int main() {
-    sol8();
+    sol11();
 }
