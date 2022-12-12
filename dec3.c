@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 int contains(char string[100], int sfrom, int sto, char c) {
     for (int i = sfrom; i < sto; ++i) {

@@ -8,9 +8,6 @@
 #include "dec11.c"
 #include "dec12.c"
 
-#include <stdio.h>
-#include <stdlib.h>
-
 int main() {
     sol12();
 }
